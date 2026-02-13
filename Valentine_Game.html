@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kajal ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff758f, #ff4d6d),url(file:///C:/Users/akash/OneDrive/Desktop/cute-romantic-background-valentine-s-day-i-love-you-card-declaration-love-cute-romantic-background-valentine-s-day-i-348718748.webp);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+}
+
+/* floating hearts */
+.heart {
+  position: absolute;
+  color: rgba(255,255,255,0.6);
+  font-size: 20px;
+  animation: float 8s linear infinite;
+}
+@keyframes float {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-10vh); }
+}
+
+/* card */
+.card {
+  background: #fff;
+  padding: 35px;
+  border-radius: 25px;
+  text-align: center;
+  width: 320px;
+  box-shadow: 0 0 30px rgba(255,0,90,0.6);
+}
+
+h1 { color: #c9184a; }
+p { color: #555; }
+
+button {
+  padding: 14px 28px;
+  border-radius: 30px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+#yes {
+  background: #ff006e;
+  color: white;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+#no {
+  background: #ced4da;
+  position: absolute;
+}
+
+.hidden { display: none; }
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+  <h1>Kajal 🌹</h1>
+  <p>You are my love since 2019 ❤️</p>
+  <h2>Will you be my Valentine?</h2>
+  <button id="yes">YES ❤️</button>
+  <button id="no">NO 🙃</button>
+</div>
+
+<div class="card hidden" id="result">
+  <h2 id="type"></h2>
+
+  <!-- embedded cute heart hug -->
+  <svg width="180" height="180" viewBox="0 0 200 200">
+    <circle cx="100" cy="100" r="70" fill="#ffd6e0"/>
+    <circle cx="80" cy="90" r="8"/>
+    <circle cx="120" cy="90" r="8"/>
+    <path d="M80 115 Q100 130 120 115" fill="none" stroke="#000" stroke-width="4"/>
+    <text x="100" y="160" font-size="24" text-anchor="middle">❤️</text>
+  </svg>
+</div>
+
+<script>
+// hearts background
+for (let i = 0; i < 20; i++) {
+  let h = document.createElement("div");
+  h.className = "heart";
+  h.innerText = "❤️";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.animationDuration = 6 + Math.random() * 6 + "s";
+  document.body.appendChild(h);
+}
+
+// NO button dodge (video-style)
+const no = document.getElementById("no");
+no.addEventListener("mouseenter", () => {
+  const x = Math.random() * (window.innerWidth - 120);
+  const y = Math.random() * (window.innerHeight - 60);
+  no.style.left = x + "px";
+  no.style.top = y + "px";
+});
+
+// YES click
+const yes = document.getElementById("yes");
+const card = document.getElementById("card");
+const result = document.getElementById("result");
+const type = document.getElementById("type");
+
+yes.onclick = () => {
+  card.classList.add("hidden");
+  result.classList.remove("hidden");
+  typeText("I promise to make you smile every day ❤️\nI love you Kajal 💕");
+};
+
+// typing effect
+function typeText(text) {
+  let i = 0;
+  const timer = setInterval(() => {
+    type.innerHTML += text.charAt(i);
+    i++;
+    if (i >= text.length) clearInterval(timer);
+  }, 60);
+}
+</script>
+
+</body>
+</html>
